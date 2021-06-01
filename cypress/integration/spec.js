@@ -1,6 +1,16 @@
 /// <reference types="cypress" />
-describe('page', () => {
-  it('works', () => {
-    cy.visit('https://example.cypress.io')
-  })
+context('Intercept', () => {
+    it('chekc intercept 1', () => {
+        cy.intercept('/plate.stl').as('files');
+        cy.visit('localhost:8010');
+
+        cy.wait('@files');
+    });
+
+    it('chekc intercept 2', () => {
+        cy.intercept('/plate.stl').as('files');
+        cy.visit('localhost:8010');
+
+        cy.wait('@files');
+    });
 })
