@@ -11,7 +11,14 @@
 
     <script type="text/javascript">
         setTimeout(() => {
-            fetch('http://127.0.0.1:2000/plate.stl');
+            function reqListener () {
+              console.log(this.responseText);
+            }
+
+            var oReq = new XMLHttpRequest();
+            oReq.onload = reqListener;
+            oReq.open("GET", "/plate.stl", true);
+            oReq.send();
         }, 1000);
     </script>
 </body>
